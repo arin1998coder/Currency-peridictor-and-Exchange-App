@@ -22,16 +22,16 @@ public class CurrencyValueController {
     @Autowired
     CurrencyValueService currencyValueService;
 
-//    //add to db past 30 days currency value api
-//    @PostMapping("/addtoDB")
-//    public String addCurrencyToDB() throws IOException {
-//        return currencyValueService.updateCurrencyValues();
-//    }
+   // add to db past 30 days currency value api
+    @PostMapping("/addtoDB")
+    public String addCurrencyToDB() throws IOException {
+        return currencyValueService.updateCurrencyValues();
+    }
 
-    //predict api
+   // predict api
     @GetMapping("/predict")
     public PredictCurrencyResponseDTO predictCurrencyValue(@RequestBody PredictCurrencyValueRequestDTO predictCurrencyValueRequestDTO) throws InvalidDateFormatException {
-        return currencyValueService.predictCurrencyOnADay(predictCurrencyValueRequestDTO);
+        return currencyValueService.predict(predictCurrencyValueRequestDTO);
     }
 
     //Exchange to another currency api

@@ -15,14 +15,11 @@ package com.FetchCurrencyVlauesOfPast.CurrencyPredictionAndConverter.entity;//im
 //}
 //}
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -37,7 +34,7 @@ public class CurrencyValues {
 
     private String code;
 
-    private String date;
+    private String this_date;
 
     private Double value;
 
