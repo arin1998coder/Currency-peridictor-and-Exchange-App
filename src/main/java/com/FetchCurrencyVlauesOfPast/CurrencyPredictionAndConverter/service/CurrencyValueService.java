@@ -62,20 +62,17 @@ public class CurrencyValueService {
 
             Response response = client.newCall(request).execute();
             String json = (response.body().string());
-
+//            System.out.println(json);
             Gson gson = new Gson();
-            HashMap<String, Double> ratesMap = new HashMap<>();
+
 
             RatesResponse response1 = gson.fromJson(json, RatesResponse.class);
-            for (String currencyCode : response1.rates.keySet()) {
-                double rate = response1.rates.get(currencyCode);
-                ratesMap.put(currencyCode, rate); // adding in hashmap
-            }
+            System.out.println(response1.rates);
 
-            for (String s : ratesMap.keySet()) {
+            for (String s : response1.rates.keySet()) {
                 CurrencyValues currencyValues = new CurrencyValues();
                 currencyValues.setCode(s);
-                currencyValues.setValue(ratesMap.get(s));
+                currencyValues.setValue(response1.rates.get(s));
                 currencyValues.setThis_date(localDate.toString());
                 currencyValues.setIsG10((isCountryG10(s)?"YES":"NO"));
                 currencyValueRepository.save(currencyValues);
